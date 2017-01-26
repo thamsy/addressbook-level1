@@ -485,10 +485,12 @@ public class AddressBook {
     private static ArrayList<String[]> getPersonsWithNameContainingAnyKeyword(Collection<String> keywords) {
         final ArrayList<String[]> matchedPersons = new ArrayList<>();
         for (String[] person : getAllPersonsInAddressBook()) {
-            final Set<String> wordsInName = new HashSet<>(splitByWhitespace(getNameFromPerson(person)));
+            final Set<String> wordsInName = new HashSet<>(makeAllLowercase(splitByWhitespace(getNameFromPerson(person))));
+            keywords = makeAllLowercase(keywords);
             if (!Collections.disjoint(wordsInName, keywords)) {
                 matchedPersons.add(person);
             }
+            
         }
         return matchedPersons;
     }
@@ -1162,6 +1164,14 @@ public class AddressBook {
      */
     private static ArrayList<String> splitByWhitespace(String toSplit) {
         return new ArrayList<>(Arrays.asList(toSplit.trim().split("\\s+")));
+    }
+    
+    private static ArrayList<String> makeAllLowercase(Collection<String> toLower) {
+    	ArrayList<String> lowered = new ArrayList<String>();
+    	for (String strToLower : toLower) {
+    		lowered.add(strToLower.toLowerCase());
+    	}
+    	return lowered;
     }
 
 }
