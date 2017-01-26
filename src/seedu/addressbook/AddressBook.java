@@ -37,7 +37,10 @@ import java.util.Set;
  **/
 public class AddressBook {
 
-    /**
+    private static final int NUM_PROPERTY_PERSON_DATA = 3 // 3 arguments
+;
+
+	/**
      * Default file path used if the user doesn't provide the file name.
      */
     private static final String DEFAULT_STORAGE_FILEPATH = "addressbook.txt";
@@ -958,7 +961,7 @@ public class AddressBook {
     private static boolean isPersonDataExtractableFrom(String personData) {
         final String matchAnyPersonDataPrefix = PERSON_DATA_PREFIX_PHONE + '|' + PERSON_DATA_PREFIX_EMAIL;
         final String[] splitArgs = personData.trim().split(matchAnyPersonDataPrefix);
-        return splitArgs.length == 3 // 3 arguments
+        return splitArgs.length == NUM_PROPERTY_PERSON_DATA
                 && !splitArgs[0].isEmpty() // non-empty arguments
                 && !splitArgs[1].isEmpty()
                 && !splitArgs[2].isEmpty();
