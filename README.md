@@ -79,6 +79,12 @@ oldest first.
 
 Format: `list`  
 
+#### Listing all persons in lexical order: `sort`
+
+> Shows a list of persons, as an indexed list, in lexical order
+
+Format: `sort`
+
 #### Finding a person by keyword `find`
 > Finds persons that match given keywords
 
